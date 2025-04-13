@@ -4,24 +4,18 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useQueryClient, useQuery } from "@tanstack/react-query"
+import FormValidationSchema from "./ValidationSchemas/AddressInfoSchema"
 import FormTitle from "./FormTitle"
 
 
 export default function AddressDetails() {
-    const formSchema = z.object({
-        streetAddress: z.string().min( 1, { message: "Street Address is required" }),
-        city: z.string().min( 1, { message: "City is required" }),
-        zipCode: z.string().min(4, { message: "Zip Code must be at least 4 digits" })
-                                .regex(/^\d+$/, { message: "Zip Code must be digits only" }),
-    })
     const queryClient = useQueryClient();
-
 
     const { streetAddress, city, zipCode, formSequence } = queryClient.getQueryData(['form_data']);
 
     const { register, handleSubmit, watch, formState: { errors, isSubmitting,  } } = useForm({
         defaultValues: { streetAddress, city, zipCode },
-        resolver: zodResolver(formSchema)
+        resolver: zodResolver(FormValidationSchema)
     })
 
     function backToPrevious(params) {

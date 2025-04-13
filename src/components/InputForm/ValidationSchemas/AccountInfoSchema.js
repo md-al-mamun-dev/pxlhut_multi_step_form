@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const AccountInfoSchema = z.object({
-        username: z.string().min(4, { message: "Username must be at least 4 letters" }),
+        username: z.string().min(4, { message: "Username must be at least 4 characters" }),
         password: z.string().min(6, { message: "Password must be at least 6 characters." }),
         confirmPassword: z.string(),
     }).superRefine(({ password, confirmPassword }, ctx) => {
