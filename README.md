@@ -1,5 +1,9 @@
-this is an sample application built using Nextjs 
+
 ## Multi Step Form 
+this is an sample application built using Nextjs 
+you can check the deployed version on web https://pxlhut-multi-step-form-theta.vercel.app/
+
+
 clone the repository from https://github.com/md-al-mamun-dev/pxlhut_multi_step_form
 
 run the development server:
