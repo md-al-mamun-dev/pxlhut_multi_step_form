@@ -3,6 +3,7 @@
 import PersonalInformation from "./PersonalInformation"
 import AddressDetails from "./AddressDetails"
 import AccountSetup from "./AccountSetup";
+import UsersSummery from "./UsersSummery";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 
@@ -26,6 +27,9 @@ if (initialData.formSequence === 2) {
 
 if (initialData.formSequence === 3) {
   return <AccountSetup />
+}
+if (initialData.formSequence === 4) {
+  return <UsersSummery />
 }
 
 return null;

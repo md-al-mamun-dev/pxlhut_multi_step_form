@@ -23,11 +23,15 @@ export default function AccountSetup() {
     })
 
 
-    const onSubmit = (data) => {
-        queryClient.setQueryData(['form_data'], (prev) => ({...prev, ...data}))
-        router.push(`/user-details?name=${fullName}&username=${data.username}&email=${email}&phone=${phoneNumber}&address=${streetAddress}&city=${city}&zip=${zipCode}`);
+    // const onSubmit = (data) => {
+    //     queryClient.setQueryData(['form_data'], (prev) => ({...prev, ...data}))
+    //     router.push(`/user-details?name=${fullName}&username=${data.username}&email=${email}&phone=${phoneNumber}&address=${streetAddress}&city=${city}&zip=${zipCode}`);
+    //   };
+
+      const onSubmit = (data) => {
+        queryClient.setQueryData(['form_data'], (prev) => ({...prev, ...data, formSequence: 4}))
       };
-    function backToPrevious(params) {
+    function backToPrevious() {
         const formData = watch();
         queryClient.setQueryData(['form_data'], (prev) => ({...prev, ...formData, formSequence: formSequence -1}))
     }
@@ -64,16 +68,24 @@ export default function AccountSetup() {
         <div className="flex justify-between mt-8">
             <button onClick={backToPrevious} type="button" disabled={isSubmitting} 
                 className="px-6 py-3 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                {"Back"}
+                {"Previous"}
             </button>
             <button type="submit" disabled={isSubmitting || Object.keys(errors).length > 0} 
+                className={`ml-auto px-6 py-3 w-1/2 rounded-lg  transition 
+                    ${isSubmitting || Object.keys(errors).length > 0
+                      ? 'bg-gray-300 text-gray-500 opacity-60 cursor-not-allowed'
+                      : 'bg-blue-600 text-white hover:bg-blue-700'
+                    }`}>
+                {"Next"}
+            </button>
+            {/* <button type="submit" disabled={isSubmitting || Object.keys(errors).length > 0} 
                 className={`ml-auto px-6 py-3 w-1/2 rounded-lg transition
                     ${isSubmitting || Object.keys(errors).length > 0
                         ? 'bg-gray-300 text-gray-500 opacity-60 cursor-not-allowed'
                         : 'bg-green-600 text-white hover:bg-green-700'
                       }`}>
-                {"Submit"}
-            </button>
+                {"Show Summery"}
+            </button> */}
         </div>
     </Form>
   )

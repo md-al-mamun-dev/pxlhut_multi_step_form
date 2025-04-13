@@ -58,7 +58,7 @@ export default function AddressDetails() {
         <div className="flex justify-between mt-8">
             <button onClick={backToPrevious} type="button" disabled={isSubmitting} 
                 className="px-6 py-3 rounded-lg border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                {"Back"}
+                {"Previous"}
             </button>
             <button type="submit" disabled={isSubmitting || Object.keys(errors).length > 0} 
                 className={`ml-auto px-6 py-3 w-1/2 rounded-lg  transition 
