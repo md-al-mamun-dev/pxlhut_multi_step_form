@@ -11,7 +11,7 @@ export default function Header() {
         <div className="flex items-center space-x-2">
           <Link href="/" onClick={(e) => {  e.preventDefault();
                                             window.location.href = '/'; }}>
-            <div className="text-2xl font-bold text-gray-800 dark:text-white">Logo</div>
+            <div className="text-2xl font-bold text-gray-800 dark:text-white">Multi Step Form Application</div>
           </Link>
         </div>
         <button 

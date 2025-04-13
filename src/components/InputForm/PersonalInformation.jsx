@@ -3,6 +3,7 @@ import Form from "next/form"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useQueryClient } from "@tanstack/react-query"
+import FormTitle from "./FormTitle"
 import FormValidationSchema from "./ValidationSchemas/PersonalInfoSchema"
 
 
@@ -23,10 +24,7 @@ export default function PersonalInformation() {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}  className="max-w-2xl mx-auto p-4 rounded-lg ">
         <div className="space-y-4 my-2 py-4">
-            <h1 className="text-3xl font-semibold text-gray-500 text-center mb-8 animate-slide-down">
-                Personal Information
-            </h1>
-            <hr className="h-px my-8 bg-gray-300 border-0 dark:bg-gray-500" />
+            <FormTitle title="Personal Information" />
             <div className="form-input-wrapper">
                 <input className={`form-input ${errors.fullName ? 'outline-red-600' : 'form-input-outline'}`} {...register("fullName")} placeholder="Enter your Full Name" />
                 {   

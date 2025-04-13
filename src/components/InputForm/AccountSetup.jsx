@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useQueryClient, useQuery } from "@tanstack/react-query"
 import { useRouter } from 'next/navigation'
 import FormValidationSchema from "./ValidationSchemas/AccountInfoSchema"
+import FormTitle from "./FormTitle"
 
 
 export default function AccountSetup() {
@@ -35,10 +36,7 @@ export default function AccountSetup() {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}   className="max-w-2xl mx-auto p-4 rounded-lg ">
         <div className="space-y-4 my-2 py-4">
-            <h1 className="text-3xl font-semibold text-gray-500 text-center mb-8 animate-slide-down">
-                Account Setup
-            </h1>
-            <hr className="h-px my-8 bg-gray-300 border-0 dark:bg-gray-500" />
+            <FormTitle title="Account Setup" />
             <div className={`form-input-wrapper `} >
                 <input className={`form-input ${errors.username ? 'outline-red-600' : 'form-input-outline'}`} {...register("username")} placeholder="Enter your username" />
                 {   
