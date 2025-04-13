@@ -1,26 +1,136 @@
 @import "tailwindcss";
+@tailwind components;
+@tailwind utilities;
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --clr-background: #F9FAFB;
+  --clr-surface: #FFFFFF;
+  --clr-header: #1F2937;
+
+  --clr-text-primary: #111827;
+  --clr-text-secondary: #6B7280;
+  --clr-text-placeholder: #9CA3AF;
+
+}
+
+[data-theme="dark"]{
+  --clr-background: #111827;
+  --clr-surface: #1F2937;
+  --clr-header: #0F172A;
+
+  --clr-text-primary: #F3F4F6;
+  --clr-text-secondary: #9CA3AF;
+  --clr-text-placeholder: #6B7280;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* --color-background: var(--background);
+  --color-foreground: var(--foreground); */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+body {
+  background: var(--clr-background);
+  color: var(--clr-text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.theme-context-wrapper {
+  background: var(--clr-background);
+  color: var(--clr-text-primary);  
+}
+
+/* Utility class */
+
+/* .clr-background {
+  background: var(--clr-background);
+}
+
+.clr-surface {
+  background: var(--clr-surface);
+}
+
+.clr-header {
+  background: var(--clr-header);
+}
+
+.clr-text-primary {
+  color: var(--clr-text-primary);
+}
+
+.clr-text-secondary {
+  color: var(--clr-text-secondary);
+}
+
+.clr-text-placeholder {
+  color: var(--clr-text-placeholder);
+} */
+
+
+
+/* Component Class */
+.form-input{
+  @apply w-full px-8 py-4 rounded-2xl text-gray-800 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-300 dark:focus:bg-[#545252] focus:shadow-[3px_3px_8px_#dbd7d7,-3px_-3px_8px_#ffffff] dark:focus:shadow-[3px_3px_8px_#111111,-3px_-3px_8px_#2a2a2a]   transition-[box-shadow,background-color,color] duration-300 outline;
+}
+.form-input-outline{
+  @apply outline-[#eeeeee] dark:outline-[#4c4c4c] focus:outline focus:outline-[#ebedef] dark:focus:outline-[#4f5051]
+}
+.form-input-wrapper{
+  @apply w-full relative pb-4 
+}
+
+.form-input-error-msg{
+  @apply text-red-700 dark:text-red-400 absolute -bottom-2 right-10 sm:left-10 ;
+}
+
+.user-detail-item{
+  @apply text-lg font-medium text-gray-800 dark:text-gray-100 px-4 py-3;
+}
+
+@layer utilities {
+  .animate-fade-in {
+    @apply opacity-0 translate-y-8;
+    animation: fadeIn 0.7s ease-out forwards;
+  }
+
+  .animate-slide-down {
+    @apply opacity-0 translate-y-4;
+    animation: slideDown 0.8s ease-out forwards;
+  }
+
+  .animate-pop-in {
+    @apply opacity-0 scale-95;
+    animation: popIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDown {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes popIn {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+
+/* Dev Dependent Debug class */
+.marker-class{
+  border: 1px solid red;
 }
